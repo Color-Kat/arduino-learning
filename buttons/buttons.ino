@@ -1,8 +1,10 @@
 #define button_pin 2
 #define nano_lamp 13
 
-boolean isButtonPressed = 0;
-boolean light = 0;
+boolean isButtonPressed = 0; // State of button
+boolean light = 0; // State of the arduino led
+
+unsigned long last_click = 0;
 
 void setup() {
     Serial.begin(9600);
@@ -13,7 +15,9 @@ void setup() {
 void loop() {
     boolean button = !digitalRead(button_pin);
 
-    if(button == 1 && isButtonPressed == 0) {
+    if(button == 1 && isButtonPressed == 0 && millis() - last_click > 50){
+        last_click = millis;
+      
         Serial.println("Кнопка нажата");
         isButtonPressed = 1;
         light = !light;
