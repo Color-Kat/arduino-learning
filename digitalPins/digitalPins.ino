@@ -9,25 +9,14 @@ boolean light = 0;
 
 void setup() {
     Serial.begin(9600);
-    pinMode(button_pin, INPUT);
+    pinMode(button_pin, INPUT_PULLUP);
     pinMode(nano_lamp, OUTPUT);
 }
   
 void loop() {
-    boolean button = digitalRead(button_pin);
-    digitalWrite(nano_lamp, 1);
-
+    boolean button = !digitalRead(button_pin);
+    
     Serial.println(button);
-
-    if(button == 1) light = 1;
-    else light = 0;
-
     
-    
-  
-//    if(millis() - last_time > 1000) {
-//        last_time = millis();
-//        digitalWrite(nano_lamp, light);
-//        light = !light;
-//    }
+    digitalWrite(nano_lamp, button);
 }
