@@ -1,11 +1,10 @@
 #include <microDS18B20.h>
 
-// один датчик на пине без адресации
+// ПОдключаем термометр DS18b20
 MicroDS18B20<5> ds;
 
 void setup(){
   Serial.begin(9600);
-  ds.setResolution(9);
 }
 
 void loop() {
