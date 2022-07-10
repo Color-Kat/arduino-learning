@@ -22,7 +22,7 @@ void loop()
     myOLED.setFont(RusFont);
     myOLED.print("XFQ VFIBYF", x, 5); 
     myOLED.setFont(SmallFont);
-    myOLED.print("@By ColorKat", x - 10, 20); 
+    myOLED.print("@By ColorKat", x - 8, 20); 
     myOLED.update();
 
     if(x > 128) x = 0;
